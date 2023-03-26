@@ -23,7 +23,7 @@ const MyFollowingPost = () => {
   }, []);
 
   const fetchPost = () => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
 
     axios
       .get("api/post/myfollowingpost", {
@@ -49,7 +49,7 @@ const MyFollowingPost = () => {
             colorScheme={"facebook"}
             h='50px'
           >
-            Post Somethig
+            Post Something
           </Button>
         </NavLink>
       </Container>

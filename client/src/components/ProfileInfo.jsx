@@ -100,7 +100,7 @@ const ProfileInfo = ({ user, post }) => {
     }
   };
   const postData = () => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .put(
         "/api/user/uploadprofilepic",
@@ -116,9 +116,9 @@ const ProfileInfo = ({ user, post }) => {
       )
       .then((data) => {
         setLoading(false);
-        const preData = JSON.parse(localStorage.getItem("stMidea"));
+        const preData = JSON.parse(localStorage.getItem("stmedia"));
         localStorage.setItem(
-          "stMidea",
+          "stmedia",
           JSON.stringify({ ...preData, image: url }),
         );
         window.location.reload();

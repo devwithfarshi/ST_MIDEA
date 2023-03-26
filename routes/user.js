@@ -81,13 +81,15 @@ router.put(`/unfollow`, requireLogin, (req, res) => {
 
 router.get("/search/:key", requireLogin, (req, res) => {
   const key = req.params.key;
-  User.find({
-    $or: [{ name: { $regex: key } }, { username: { $regex: key } }],
-  })
-    .then((result) => {
-      res.json(result);
+  if (key) {
+    User.find({
+      $or: [{ name: { $regex: key } }, { username: { $regex: key } }],
     })
-    .catch((err) => res.json({ err }));
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => res.json({ err }));
+  }
 });
 
 router.put("/uploadprofilepic", requireLogin, (req, res) => {

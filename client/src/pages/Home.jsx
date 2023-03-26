@@ -11,33 +11,34 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const toast = useToast();
   useEffect(() => {
-    navigate("/");
-    if (!user) {
+    if (!JSON.parse(localStorage.getItem("stmedia"))) {
       return navigate("/signup");
     }
     fetchPost();
   }, []);
 
   const fetchPost = () => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    if (user) {
+      const token = JSON.parse(localStorage.getItem("stmedia")).token;
 
-    axios
-      .get("api/post/allposts", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then(({ data }) => {
-        setPosts(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      axios
+        .get("api/post/allposts", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        })
+        .then(({ data }) => {
+          setPosts(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   const handleDeletePost = (id) => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
 
     axios
       .delete(`/api/post/deletePost/${id}`, {
@@ -71,7 +72,7 @@ const Home = () => {
             colorScheme={"facebook"}
             h='50px'
           >
-            Post Somethig
+            Post Something
           </Button>
         </NavLink>
       </Container>

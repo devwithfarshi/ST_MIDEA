@@ -50,7 +50,7 @@ const CreatePost = () => {
   };
 
   const postData = () => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .post(
         "/api/post/createPost",

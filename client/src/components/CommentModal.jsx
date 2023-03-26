@@ -47,7 +47,7 @@ const CommentModal = ({ children, name, id, comments }) => {
     }
     // add new comment to comments array
     setError(false);
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .put(
         `/api/post/comment`,

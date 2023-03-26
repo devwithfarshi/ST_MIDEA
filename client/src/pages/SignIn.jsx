@@ -74,7 +74,7 @@ const SignIn = () => {
         isClosable: true,
         position: "top",
       });
-      localStorage.setItem("stMidea", JSON.stringify(data));
+      localStorage.setItem("stmedia", JSON.stringify(data));
       dispatch(setUser(data));
       navigate("/");
     } catch (error) {

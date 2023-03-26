@@ -52,7 +52,7 @@ const Post = ({
   const { user } = useSelector((state) => state.user);
 
   const handleLike = (id) => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .put(
         `/api/post/like`,
@@ -76,7 +76,7 @@ const Post = ({
       });
   };
   const handleUnLike = (id) => {
-    token = JSON.parse(localStorage.getItem("stMidea")).token;
+    token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .put(
         `/api/post/unlike`,
@@ -102,7 +102,7 @@ const Post = ({
   };
 
   useEffect(() => {
-    token = JSON.parse(localStorage.getItem("stMidea")).token;
+    token = JSON.parse(localStorage.getItem("stmedia")).token;
     const isLiked = likes.includes(user._id);
     setLikesCount(likes.length ? likes.length : 0);
     setLiked(isLiked);

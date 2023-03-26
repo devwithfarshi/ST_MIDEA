@@ -15,8 +15,7 @@ function App() {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("stMidea"));
-    console.log(user);
+    const user = JSON.parse(localStorage.getItem("stmedia"));
     if (user) {
       dispatch(setUser(user));
     } else {

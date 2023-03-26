@@ -25,7 +25,7 @@ const Profile = ({ user }) => {
     .filter((p) => p !== undefined);
 
   const handleDeletePost = (id) => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
 
     axios
       .delete(`/api/post/deletePost/${id}`, {
@@ -51,7 +51,7 @@ const Profile = ({ user }) => {
   };
 
   const handleFollow = () => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .put(
         `/api/user/follow`,
@@ -68,7 +68,7 @@ const Profile = ({ user }) => {
       });
   };
   const handleUnFollow = () => {
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .put(
         `/api/user/unfollow`,
@@ -90,7 +90,7 @@ const Profile = ({ user }) => {
       return navigate("/signup");
     }
 
-    const token = JSON.parse(localStorage.getItem("stMidea")).token;
+    const token = JSON.parse(localStorage.getItem("stmedia")).token;
     axios
       .get(`/api/user/profile/${userId}`, {
         headers: {
@@ -105,7 +105,7 @@ const Profile = ({ user }) => {
         const idArray = data.user.followers.map((v) => {
           return v._id;
         });
-        if (idArray.includes(JSON.parse(localStorage.getItem("stMidea"))._id)) {
+        if (idArray.includes(JSON.parse(localStorage.getItem("stmedia"))._id)) {
           setIsFollowing(true);
         }
       });

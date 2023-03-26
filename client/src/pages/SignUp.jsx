@@ -219,7 +219,7 @@ const SignUp = () => {
 
             <GridItem colSpan={{ base: 1, md: 2 }}>
               <Text m='12px 0'>
-                By signing up, you agree to out Terms, privacy policy and
+                By signing up, you agree to our Terms, privacy policy and
                 cookies policy.
               </Text>
             </GridItem>
