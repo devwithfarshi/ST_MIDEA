@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Mobailnav from "../components/Mobailnav";
 import Post from "../components/Post";
 import axios from "../config/axiosConfig";
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const [posts, setPosts] = useState([]);
+  const [mobailNav, setMobailNav] = useState(false);
   const toast = useToast();
   useEffect(() => {
     if (!JSON.parse(localStorage.getItem("stmedia"))) {
@@ -63,9 +65,17 @@ const Home = () => {
       });
   };
 
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width <= 768) {
+      setMobailNav(true);
+    }
+  }, []);
+
   return (
     <Wrapper>
       <Container my={5}>
+        {mobailNav && <Mobailnav />}
         <NavLink to='/createpost'>
           <Button
             w='100%'
@@ -77,7 +87,7 @@ const Home = () => {
         </NavLink>
       </Container>
       {}
-      <Container>
+      <Container pb={{ base: "72px", md: 0 }}>
         {posts &&
           posts.map((value, i) => {
             return (

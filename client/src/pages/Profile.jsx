@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import Mobailnav from "../components/Mobailnav";
 import Post from "../components/Post";
 import ProfileGallery from "../components/ProfileGallery";
 import ProfileInfo from "../components/ProfileInfo";
@@ -13,6 +14,7 @@ const Profile = ({ user }) => {
 
   const [userDetails, setUserDetails] = useState({});
   const [isFollowing, setIsFollowing] = useState(false);
+  const [mobailNav, setMobailNav] = useState(false);
 
   const toast = useToast();
   const { userId } = useParams();
@@ -99,7 +101,6 @@ const Profile = ({ user }) => {
         },
       })
       .then(({ data }) => {
-        console.log(data);
         setMyPosts(data.post);
         setUserDetails(data.user);
         const idArray = data.user.followers.map((v) => {
@@ -110,10 +111,22 @@ const Profile = ({ user }) => {
         }
       });
   }, [isFollowing]);
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    if (width <= 768) {
+      setMobailNav(true);
+    }
+  }, []);
+
   return (
     <Container p={0}>
       <Wrapper>
-        <VStack align={"flex-start"}>
+        <VStack
+          w='full'
+          align={"flex-start"}
+        >
+          {mobailNav && <Mobailnav />}
           <ProfileInfo
             user={userDetails}
             post={myPosts}
@@ -144,7 +157,7 @@ const Profile = ({ user }) => {
           <ProfileGallery photos={photos} />
           <Divider />
         </VStack>
-        <Container>
+        <Container pb={{ base: "72px", md: 0 }}>
           {myPosts &&
             myPosts.map((value, i) => {
               return (

@@ -302,7 +302,7 @@ const Wrapper = styled.div`
   font-weight: 500;
 
   @media (max-width: 768px) {
-    padding: 20px 0;
+    padding: 72px 0 20px 0;
   }
   display: flex;
   justify-content: space-between;

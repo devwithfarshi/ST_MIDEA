@@ -145,7 +145,7 @@ const CreatePost = () => {
   };
 
   return (
-    <Container>
+    <Container pb={{ base: "72px", md: 0 }}>
       <VStack
         align={"flex-start"}
         border={{ base: 0, md: "1px solid rgb(173,173,173)" }}
@@ -153,8 +153,23 @@ const CreatePost = () => {
         p={{ base: 0, md: 4 }}
         gap={{ base: "12px", md: "25px" }}
       >
-        <VStack w='full'>
-          <Heading>Create New Post</Heading>
+        <VStack
+          w='full'
+          p={2}
+        >
+          <HStack
+            justify={"space-between"}
+            w='full'
+          >
+            <Heading>Create New Post</Heading>
+            <Button
+              onClick={handlePost}
+              isLoading={loading}
+              colorScheme={"facebook"}
+            >
+              Share
+            </Button>
+          </HStack>
           <Divider />
         </VStack>
         <Input
@@ -173,13 +188,6 @@ const CreatePost = () => {
           />
           <Heading size={"md"}>{user.name}</Heading>
         </HStack>
-        {selectedFile && (
-          <Image
-            src={preview}
-            alt='selected img'
-            width={"100%"}
-          />
-        )}
         <Textarea
           placeholder='Write a Caption...'
           resize={"none"}
@@ -188,13 +196,13 @@ const CreatePost = () => {
           }}
           value={title}
         ></Textarea>
-        <Button
-          onClick={handlePost}
-          isLoading={loading}
-          colorScheme={"facebook"}
-        >
-          Post
-        </Button>
+        {selectedFile && (
+          <Image
+            src={preview}
+            alt='selected img'
+            width={"100%"}
+          />
+        )}
       </VStack>
     </Container>
   );
