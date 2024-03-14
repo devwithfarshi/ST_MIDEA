@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const { jwt_secret } = require("../config/config");
 const mongoose = require("mongoose");
 const User = require("../models/userModel");
 module.exports = (req, res, next) => {
@@ -8,7 +7,7 @@ module.exports = (req, res, next) => {
     return res.status(401).json({ error: "You must have looged in 1" });
   }
   const token = authorization.replace("Bearer ", "");
-  jwt.verify(token, jwt_secret, (err, paylaod) => {
+  jwt.verify(token, process.env.jwt_secret, (err, paylaod) => {
     if (err) {
       return res.status(401).json({ error: "You must have looged in 2" });
     }

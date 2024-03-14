@@ -2,7 +2,6 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
-const { jwt_secret } = require("../config/config");
 const requireLogin = require("../middlewares/requireLogin");
 const router = express.Router();
 router
@@ -54,7 +53,10 @@ router
           .then((match) => {
             const { _id, name, email, username, image } = result;
             if (match) {
-              const token = jwt.sign({ _id: result._id }, jwt_secret);
+              const token = jwt.sign(
+                { _id: result._id },
+                process.env.jwt_secret
+              );
               res.json({
                 _id,
                 name,
