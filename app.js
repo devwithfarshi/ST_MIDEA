@@ -8,7 +8,7 @@ const userRouter = require("./routes/user");
 const { connectDB } = require("./config/connectDB");
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 9874;
 app.use(cors());
 app.use(express.json());
 connectDB(
@@ -35,8 +35,8 @@ app.get("*", (req, res) => {
   );
 });
 
-app.listen(port, "127.0.0.1", () => {
+app.listen(() => {
   console.log(
-    `server running on : http://127.0.0.1:${port}`.america.white.bold
+    `server running on : http://127.0.0.1:${9874}`.america.white.bold
   );
 });
