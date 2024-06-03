@@ -19,24 +19,24 @@ app.use("/api/auth", authRouter);
 app.use("/api/post", postRouter);
 app.use("/api/user", userRouter);
 
-// app.get("/", (req, res) => {
-//   res.send("API is running...");
-// });
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 //Servin the frontend
 
-app.use(express.static(path.join(__dirname, "./client/dist")));
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "./client/dist/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
-});
+// app.use(express.static(path.join(__dirname, "./client/dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(
+//     path.join(__dirname, "./client/dist/index.html"),
+//     function (err) {
+//       res.status(500).send(err);
+//     }
+//   );
+// });
 
-app.listen(() => {
+app.listen(port, () => {
   console.log(
-    `server running on : http://127.0.0.1:${9874}`.america.white.bold
+    `server running on : http://127.0.0.1:${port}`.america.white.bold
   );
 });
